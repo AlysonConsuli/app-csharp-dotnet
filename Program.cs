@@ -4,6 +4,7 @@
 
         Console.WriteLine(account1.Balance);
         account1.Deposit(100);
+        account1.Withdrawal(50);
         Console.WriteLine(account1.Balance);
     }
 }
@@ -26,8 +27,15 @@ class BankAccount{
 
     public void Deposit(decimal amount){
         if(amount <= 0){
-            throw new ArgumentException("You cannot deposit numbers less than or equal to 0.", nameof(amount));
+            throw new ArgumentException("Invalid deposit.", nameof(amount));
         }
         balance += amount;
+    }
+
+    public void Withdrawal(decimal amount){
+        if(amount <= 0){
+            throw new ArgumentException("Invalid withdrawal.", nameof(amount));
+        }
+        balance -= amount;
     }
 }
